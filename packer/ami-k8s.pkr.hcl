@@ -40,19 +40,8 @@ build {
 
     provisioner "ansible" {
         playbook_file = "./requeriments.yaml"  
-    #    ansible_env_vars = [ "ANSIBLE_HOST_KEY_CHECKING=False"] # "ANSIBLE_SSH_ARGS='-o ForwardAgent=yes -o ControlMaster=auto -o ControlPersist=60s'", "ANSIBLE_NOCOLOR=True" ]
         use_proxy = false
     }
 
-#provisioner "shell" {
-#    inline = ["sudo apt update &&  sudo apt install nginx -y" ]
-#}
-#provisioner "file" {
-#  source = "index.html"
-#  destination = "/tmp/index.html"
-#}
-#provisioner "shell" {
-#    inline = ["sudo cp /tmp/index.html  /var/www/html/index.html" ]
-#}
 
 }

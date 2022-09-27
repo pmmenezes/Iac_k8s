@@ -29,7 +29,7 @@ variable "instance_type" {
 }
 
 variable "numero_nodes_wk" {
-  default = 1
+  default = 2
 }
 
 variable "numero_nodes_cp" {
