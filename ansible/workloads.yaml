@@ -3,11 +3,11 @@
   become: yes
   gather_facts: false
   tasks:
-    - name: get join command
+    - name: Pegando comando join 
       shell: kubeadm token create --print-join-command
       register: join_command_raw
 
-    - name: set join command
+    - name: Setando env com comando join
       set_fact:
         join_command: "{{ join_command_raw.stdout_lines[0] }}"
 
@@ -15,7 +15,7 @@
 - hosts: _workload
   become: yes
   tasks:
-    - name: join cluster
+    - name: Integrando Node no cluster
       shell: "{{ hostvars[groups['_control_plane'][0]].join_command }} >> node_joined.txt"
       args:
         chdir: $HOME
