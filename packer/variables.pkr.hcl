@@ -7,7 +7,7 @@ variable "profile" {
 variable "version_k8s" {
     type =  string
     description = "Versão do kubernetes "
-    default = "1.25"
+    default = "1.24"
 }
 
 variable "username" {

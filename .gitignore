@@ -11,6 +11,8 @@ awscredentials
 # Cache objects
 packer_cache/
 
+keys/
+
 # Crash log
 crash.log
 

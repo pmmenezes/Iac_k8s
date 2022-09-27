@@ -44,27 +44,15 @@
         - ca-certificates 
         - curl
         - gnupg
+        - gnupg2
         - lsb-release
         state: present
         update_cache: yes
 
-    - name: Repo do Containerd
-      block:
-        - name: Adicionando Chave publica para Docker
-          ansible.builtin.apt_key:
-            url: https://download.docker.com/linux/ubuntu/gpg
-            keyring: /etc/apt/keyrings/docker.gpg
-
-        - name: Adicionando Repo Docker
-          ansible.builtin.apt_repository:
-            repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"
-            state: present
-
-
     - name: Instalando containerd
       ansible.builtin.apt:
         name: 
-        - containerd.io
+        - containerd
         update_cache: yes
 
     - name: Dir para configs containerd
@@ -101,11 +89,16 @@
     - name: Instalar kubelet, kubeadm e kubectl 
       ansible.builtin.apt: 
         name:
-        - kubelet
-        - kubeadm
-        - kubectl
+        - kubelet=1.24*
+        - kubeadm=1.24*
+        - kubectl=1.24*
         update_cache: yes
 
+    - name: kubelet service enabled
+      service:
+        name: kubelet
+        enabled: yes
+  
 
   handlers: 
   - name: Restart Containerd
