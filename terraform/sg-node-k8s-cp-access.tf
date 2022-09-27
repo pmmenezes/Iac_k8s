@@ -60,6 +60,6 @@ resource "aws_security_group" "allow_access_node_k8s_cp" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "SG_node_k8s_cp"
   }
 }
