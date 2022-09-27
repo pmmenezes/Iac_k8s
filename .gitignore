@@ -12,7 +12,7 @@ awscredentials
 packer_cache/
 
 keys/
-
+plan/
 # Crash log
 crash.log
 
